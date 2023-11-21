@@ -1,0 +1,592 @@
+.container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--grey-scale-black-50, rgba(25, 24, 37, 0.50));
+}
+
+
+.logo {
+    background: url("./img/logo.svg") no-repeat center;
+    width: 146px;
+    height: 40px;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.nav li {
+    display: inline-block;
+    padding: 25px;
+}
+
+.nav a, .sign-up {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--grey-scale-black-50, rgba(25, 24, 37, 0.50));
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/*LOGIN SIGN UP BUTTONS*/
+
+
+.action-buttons li {
+    display: inline-block;
+}
+
+/*FOR ALL DARK TEXT*/
+
+.dark-text {
+    color: var(--Dark, #222831);
+}
+
+/*END*/
+
+.action-buttons a, .sign-up {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 16px 32px;
+}
+
+.action-buttons {
+    display: flex;
+}
+
+.sign-up {
+    border-radius: 100px;
+    background: var(--Primary, #5D50C6);
+    color: var(--Light, #EEE);
+}
+
+/*
+/*PINK TAG*/
+
+.first-text {
+    line-height: 43px;
+}
+
+.tag {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 32px;
+    color: var(--Secondary, #F85E9F);
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    margin-top: 95px;
+}
+
+.work1 {
+    background: url("./img/work 1.svg");
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 173px;
+    top: 23px;
+}
+
+h1 {
+    color: #000;
+    font-weight: 700;
+    font-size: 60px;
+}
+
+/*COMMON STYLES*/
+.pink {
+    color: var(--Secondary, #F85E9F);
+}
+
+.pink-headers {
+    color: var(--Secondary, #F85E9F);
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: 4.6px;
+    text-transform: uppercase;
+}
+
+h3 {
+    color: var(--grey-scale-black, #191825);
+    font-size: 44px;
+    font-weight: 700;
+}
+
+/*END*/
+
+/*DEMO*/
+
+
+
+.demo-group {
+    display: flex;
+    border-radius: 100px;
+    border: 1px solid var(--Light, #EEE);
+    background: var(--white, #FFF);
+    padding: 16px 32px;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.play-circle {
+    background: url("./img/play-circle.5 1.svg");
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.demo {
+    text-decoration: none;
+    color: var(--Dark, #222831);
+    font-size: 14px;
+    font-weight: 700
+}
+
+/*BUTTONS END*/
+
+/*FIRST BANNER*/
+
+.first-banner {
+    background: url("./img/ill_1.png") no-repeat center;
+    background-size: contain;
+    min-height: 713px;
+}
+
+/*COMPANIES*/
+
+.companies {
+    height: 160px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+    margin-bottom: 64px;
+
+}
+
+.company1 {
+    background: url("./img/trip-advisor.svg") no-repeat center;
+    width: 211px;
+    height: 32px;
+}
+
+.company2 {
+    background: url("./img/Expedia.svg") no-repeat center;
+    width: 211px;
+    height: 32px;
+}
+
+.company3 {
+    background: url("./img/booking.svg") no-repeat center;
+    width: 211px;
+    height: 32px;
+}
+
+.company4 {
+    background: url("./img/airbnb.svg") no-repeat center;
+    width: 211px;
+    height: 32px;
+}
+
+.company5 {
+    background: url("./img/rbitz.svg") no-repeat center;
+    width: 211px;
+    height: 32px;
+}
+
+/*COMPANIES END*/
+
+/*NEXT SECTION WITH DESTINATIONS*/
+.destination, .buttons {
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
+.round-white {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 1px solid var(--grey-scale-black-10, rgba(25, 24, 37, 0.10));
+    background: var(--white, #FFF);
+    position: relative;
+    margin-right: 32px;
+}
+
+.round-purple {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background: var(--Primary, #5D50C6);
+    position: relative;
+}
+
+.arrow-left {
+    background: url("./img/arrow-left.svg") no-repeat center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 38px;
+    top: 38px;
+}
+
+.arrow-right {
+    background: url("./img/arrow-right.svg") no-repeat center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 38px;
+    top: 38px;
+}
+
+
+/*OPTIONS*/
+
+
+.option1 {
+    background: url("./img/paradise-beach.png") no-repeat center;
+    max-width: 100%;
+    height: 350px;
+    border-radius: 32px 32px 0px 0px;
+}
+
+.option-descr {
+    margin: 32px;
+    text-align: left;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stars1 {
+    background: url("./img/4.8stars.svg") no-repeat center;
+    width: 69px;
+    height: 28px;
+}
+
+.option2 {
+    background: url("./img/fish.png") no-repeat center;
+    max-width: 100%;
+    height: 350px;
+    border-radius: 32px 32px 0px 0px;
+}
+
+.stars2 {
+    background: url("./img/4.5stars.svg") no-repeat center;
+    width: 69px;
+    height: 28px;
+}
+
+.option3 {
+    background: url("./img/mountain-view.png") no-repeat center;
+    max-width: 100%;
+    height: 350px;
+    border-radius: 32px 32px 0px 0px;
+}
+
+.stars3 {
+    background: url("./img/5.0stars.svg") no-repeat center;
+    width: 69px;
+    height: 28px;
+}
+
+.opt1, .opt2, .opt3 {
+    max-width: 100%;
+}
+
+
+
+/*SECOND TEXT*/
+
+.second-screen {
+    margin-top: 128px;
+    position: relative;
+    margin-bottom: 273px;
+}
+
+.second-text {
+    width: 534px;
+}
+
+.service1 {
+    display: flex;
+    align-items: flex-end;
+    margin: 32px;
+}
+
+.location {
+    width: 100px;
+    height: 100px;
+    border-radius: 32px;
+    background: var(--Orange, #FF5722);
+    position: relative;
+    margin-right: 32px;
+}
+
+.location-pic {
+    background: url("./img/location 2.svg") no-repeat center;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 26px;
+    left: 26px;
+}
+
+.calendar {
+    width: 100px;
+    height: 100px;
+    border-radius: 32px;
+    background: var(--Yellow, #FACD49);
+    position: relative;
+    margin-right: 32px;
+}
+
+.calendar-pic {
+    background: url("./img/calendar 1.svg") no-repeat center;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 26px;
+    left: 26px;
+}
+
+.ticket {
+    width: 100px;
+    height: 100px;
+    border-radius: 32px;
+    background: var(--Secondary, #F85E9F);
+    position: relative;
+    margin-right: 32px;
+}
+
+.ticket-pic {
+    background: url("./img/ticket 1.svg") no-repeat center;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 26px;
+    left: 26px;
+}
+
+/*COMMON h4 style*/
+
+h4 {
+    color: var(--grey-scale-black, #191825);
+    font-size: 23px;
+    font-weight: 700;
+}
+
+
+.second-banner {
+    background: url("./img/paradise-on-earth.png") no-repeat center;
+    width: 693px;
+    height: 869px;
+    margin-left: 50px;
+    position: absolute;
+    top: 0;
+    right: -173px;
+}
+
+/*FOOTER*/
+
+footer {
+    margin-bottom: 64px;
+}
+
+.left-side-footer {
+    width: 560px;
+}
+
+.left-side-footer p {
+    margin-top: 32px;
+    margin-bottom: 64px;
+    font-size: 23px;
+    font-weight: 100;
+}
+
+.socials {
+    width: 160px;
+    margin-bottom: 64px;
+}
+
+.facebook {
+    background: url("./img/facebook.svg") no-repeat center;
+    width: 32px;
+    height: 32px;
+}
+
+.twitter {
+    background: url("./img/twitter.svg") no-repeat center;
+    width: 32px;
+    height: 32px;
+}
+
+.insta {
+    background: url("./img/insta.svg") no-repeat center;
+    width: 32px;
+    height: 32px;
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-menu a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--grey-scale-black-75, rgba(25, 24, 37, 0.75));
+    font-weight: 400;
+}
+
+.footer-menu li {
+    margin-bottom: 32px;
+}
+
+.bold {
+    color: var(--grey-scale-black, #191825)!important;
+    font-size: 23px;
+    font-weight: 700!important;
+    margin-bottom: 32px;
+}
+
+
+
+/*MEDIA REQS*/
+
+@media screen and (max-width: 1200px) {
+    .action-buttons a {
+        padding: 10px 25px;
+    }
+    .company {
+        justify-content: center;
+    }
+    .second-banner {
+        position: static;
+    }
+    .second-screen {
+        display: flex;
+        justify-content: center;
+    }
+    .left-side-footer {
+        width: 100%;
+        margin-bottom: 64px;
+    }
+    .sign-up, .demo-group {
+        font-size: 12px;
+        padding: 14px 22px;
+    }
+    .second-text {
+        margin-top: 64px;
+    }
+
+    .pink-headers {
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .sign-up {
+        font-size: 14px;
+        font-weight: 700;
+        padding: 16px 32px;
+    }
+    .second-text {
+        margin-top: 64px;
+    }
+
+    .first-text {
+        text-align: center;
+    }
+
+    .tag {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .work1 {
+        position: absolute;
+        left: 266px;
+        top: 23px;
+    }
+
+}
+
+
+/*ADD MORE SIZES*/
+@media screen and (max-width: 769px) {
+    .company1 {
+        background-size: contain;
+        width: 132px;
+        height: 20px;
+    }
+
+    .company2 {
+        background-size: contain;
+        width: 70px;
+        height: 20px;
+    }
+    .company3 {
+        background-size: contain;
+        width: 117px;
+        height: 20px;
+    }
+
+    .company4 {
+        background-size: contain;
+        width: 64px;
+        height: 20px;
+    }
+
+    .company5 {
+        background-size: contain;
+        width: 105px;
+        height: 20px;
+    }
+
+    .demo-group, .sign-up {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .second-banner {
+        position: static;
+        margin-right: 0;
+        margin-left: 0;
+        background-size: contain;
+    }
+    .hidden-menu li {
+        display: none;
+    }
+
+    .bold:hover > .hidden-menu {
+        display: inline-block;
+    }
+
+    .bold {
+        margin-bottom: 64px;
+    }
+
+    .last {
+        margin-bottom: 0;
+    }
+
+    .work1 {
+        position: absolute;
+        left: 173px;
+        top: 23px;
+    }
+}
