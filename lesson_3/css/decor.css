@@ -1,0 +1,51 @@
+.container {
+    box-sizing: content-box;
+    width: 786px;
+    margin: 0 auto;
+    font-family: Roboto, sans-serif;
+    line-height: 40px;
+}
+
+.link1 {
+    font-size: 25px;
+    margin-top: 25px;
+    display: inline-block;
+
+}
+a {
+    color: rgb(74, 31, 165);
+    font-weight: 700;
+    text-decoration-line: none;
+}
+.header {
+    font-size: 30px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+}
+
+
+.tag {
+    text-transform: uppercase;
+    background-color: lavender;
+    padding: 3px 5px;
+    font-weight: bold;
+}
+
+
+.text {
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-left: 6px rgb(74, 31, 165) solid;
+    padding: 15px;
+}
+.paragraph {
+    color: dimgray;
+}
+.regheader {
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
