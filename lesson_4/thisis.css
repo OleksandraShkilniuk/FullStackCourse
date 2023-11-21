@@ -1,0 +1,107 @@
+.container {
+    font-family: "Roboto", serif;
+    box-sizing: content-box;
+    width: 756px;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+h2 {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+table {
+    display: table;
+    font-size: 25px;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    color: black;
+    position: relative;
+}
+
+tbody {
+    position: relative;
+    top: -3px;
+}
+
+td:active {
+    color: red;
+}
+
+th:active {
+    color: red;
+}
+
+
+
+th {
+    border-top: 1px solid #888;
+    border-bottom: 3px double #888;
+}
+
+th:first-child {
+    border-left: 1px solid #888;
+}
+
+th:last-child {
+    border-right: 1px solid #888;
+}
+
+.headline {
+    border-right: 1px black solid;
+}
+
+td {
+    border: 1px solid #888;
+}
+
+th, td {
+    padding: 20px;
+}
+
+
+
+.topp {
+    background-color: red;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    position: fixed;
+    right: 50px;
+    bottom: 20px;
+    text-align: center;
+
+    /* this is a question, no idea how to fix it as I don`t know a thing about webkit--!>
+    webkit-transform: translateZ(0);
+    webkit-backface-visibility: hidden; !!LINK TO THE ISSUE: https://stackoverflow.com/questions/12969228/chrome-slow-scrolling-with-fixed-position-elements
+    */
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 45px;
+}
+
+.redc{
+    position: relative;
+}
+
+.redc:hover::after {
+    content: "";
+    background-color: red;
+    width: 5px;
+    height: 5px;
+    top: 5px;
+    right: 5px;
+    border-radius: 100%;
+    position: absolute;
+}
+
+
+
