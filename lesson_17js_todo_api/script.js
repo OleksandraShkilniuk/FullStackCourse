@@ -131,24 +131,20 @@ function deleteLi(uid) {
         let liElementDeleted = document.getElementById(`item-${uid}`);
         liElementDeleted.remove();
         //add a delete from local storage function that will delete item with uid from lS when deleteLi is called
-        deletefromLocalStorage(uid);
+        deletefromApi(uid);
         hideModal()
     })
 }
 
 //delete from local storage
-function deletefromLocalStorage(uid) {
+function deletefromApi(uid) {
     //get item from local storage
-    let storedTodo = JSON.parse(localStorage.getItem('todo-list'));
-
-    //find index of deleted item
-    let index = storedTodo.findIndex((item) => item.uid === uid);
-
-    //if item exists use an array splice method to remove 1 item under this index
-    if (index !== -1) {
-        storedTodo.splice(index, 1); // Remove the item from the array
-        localStorage.setItem('todo-list', JSON.stringify(storedTodo)); // Save the updated array
-    }
+    server.remove(uid).then((data) => {
+        let index = todolist.findIndex((item) => item.uid === uid);
+        if (index !== -1) {
+            todolist.splice(index, 1);
+        }
+        });
 }
 
 //save Li
