@@ -3,22 +3,32 @@ let todolist = [];
 
 //chatting with server :)
 let server = {
+
+    //put url of the api
     url: 'https://crudapi.co.uk/api/v1/todo-list',
+    //authorization token
     api_token: 'zwu1AxR-rU3QlgEEIbNe-WNu7R_drDzk4Dk-w3UHf_9f5BOxTQ',
 
+    //store on server
     store: function store(task) {
+
+        //fetch structure: url + parameters in {}, where method, headers are listed
         return fetch(`${this.url}`, {
             method: 'post',
             headers: new Headers({
                 'Authorization': `Bearer ${this.api_token}`,
                 'Content-type': 'application/json',
             }),
+            //identify the type of content, stringify it to put on server
             body: JSON.stringify([task])
         })
+            //process the response
             .then((response) => response.json())
     },
 
+    //function to get all items
     list: function list() {
+        //fetch link + parameters in {}
         return fetch(`${this.url}`, {
             method: 'get',
             headers: new Headers({
@@ -26,11 +36,13 @@ let server = {
                 'Content-type': 'application/json',
             })
         })
+            //response in json TODO: ця строка значить, що я забираю дані у форматі json з сервера, а як вони конвертяться без JSON.parse??
             .then((response) => {
                 return response.json()
             })
     },
 
+    //function that edit to understand the which element shall be edited it takes task parameters that are edited and its url
     put: function put(uid, task) {
         return fetch(`${this.url}/${uid}`, {
             method: 'put',
@@ -45,6 +57,7 @@ let server = {
             });
     },
 
+    //delete which takes uid to know what task to delete
     remove: function remove(uid) {
         return fetch(`${this.url}/${uid}`, {
             method: 'DELETE',
@@ -56,12 +69,6 @@ let server = {
             return response.json();
         });
     }
-}
-
-//generate Uid
-
-function generateUid () {
-    return Math.random().toString(16).slice(2);
 }
 
 //show modal
@@ -80,10 +87,10 @@ document.getElementById('close-modal').addEventListener('click', hideModal);
 
 //saving to api
 function init() {
-    //take from local storage
+//call function that will get all the existing tasks + their data
      server.list().then((list) => {
 
-        //reformatting items for ones from server
+        //sort the so the latest will be the first
         list.items.sort(function(a,b) {
             return b._created - a._created;
         }).forEach((task) => {
@@ -100,9 +107,7 @@ function init() {
     })
 }
 
-//
 // //empty the field
-//
 function create() {
     document.getElementById('form-title').value = '';
     document.getElementById('form-uid').value = '';
@@ -110,18 +115,30 @@ function create() {
     showModal()
 }
 
-//edit
+//edit values of the form
 
 function edit(uid) {
+
+    //find element and find its value
     const title = document.getElementById(`title-${uid}`).innerText;
     const description = document.getElementById(`description-${uid}`).innerText;
 
+    //update its value
     document.getElementById('form-title').value = title;
     document.getElementById('form-uid').value = uid;
     document.getElementById('form-description').value = description;
     showModal()
 }
 
+//update html item by taking the value
+function updateHtmlItem(uid, data) {
+    const titleElement = document.getElementById(`title-${uid}`);
+    const descriptionElement = document.getElementById(`description-${uid}`);
+
+    // Update the text content of the elements
+    titleElement.textContent = data.title;
+    descriptionElement.textContent = data.description;
+}
 
 //delete
 function deleteLi(uid) {
@@ -150,35 +167,45 @@ function deletefromApi(uid) {
 //save Li
 function save(data) {
 
+    //check if this element exists
     if(!data.uid) {
+
+        //call server to send data on server
         server.store({
+            //put data on server
             title: data.title,
             description: data.description
+            //process result
         }).then((data) => {
+            //make fields in code be equal to the fields on server
             let formattedTask = {
                 uid: data.items[0]._uuid,
                 title: data.items[0].title,
                 description: data.items[0].description,
             };
+            //push new item to the array
             todolist.push(formattedTask);
+            //create item with this data
             createHtmLtodoItem(formattedTask);
         })
     } else {
+        //item already exists
         server.put(data.uid, {
             title: data.title,
             description: data.description,
         })
+            //process the response from server
             .then((data) => {
                 let formattedTask = {
                     uid: data._uuid,
                     title: data.title,
                     description: data.description,
                 };
-
+                //find item with the index that we need to edit
                 let index = todolist.findIndex((item) => item.uid === formattedTask.uid);
                 if (index !== -1) {
                     todolist[index] = formattedTask;
-                    edit(formattedTask);
+                    updateHtmlItem(formattedTask.uid, formattedTask)
                 }
             })
 }}
@@ -272,4 +299,3 @@ function clearErrors() {
 
 init();
 
-//TODO: чекнути ініт функцію, чому вона занадто пізно апдейтить сторінку, і я отримую помилку
