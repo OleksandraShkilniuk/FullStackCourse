@@ -130,7 +130,7 @@ function edit(uid) {
     showModal()
 }
 
-//update html item by taking the value
+//update html item by taking the value from fields
 function updateHtmlItem(uid, data) {
     const titleElement = document.getElementById(`title-${uid}`);
     const descriptionElement = document.getElementById(`description-${uid}`);
@@ -153,7 +153,7 @@ function deleteLi(uid) {
     })
 }
 
-//delete from local storage
+//delete from server
 function deletefromApi(uid) {
     //get item from local storage
     server.remove(uid).then((data) => {
@@ -164,13 +164,13 @@ function deletefromApi(uid) {
         });
 }
 
-//save Li
+//save Li or update its content
 function save(data) {
 
     //check if this element exists
     if(!data.uid) {
 
-        //call server to send data on server
+        //call store to send data on server
         server.store({
             //put data on server
             title: data.title,
@@ -202,8 +202,12 @@ function save(data) {
                     description: data.description,
                 };
                 //find item with the index that we need to edit
+                //read this code find the index of an item that has the following uid and make this item equal to formatted task
                 let index = todolist.findIndex((item) => item.uid === formattedTask.uid);
+
+                //if index is not equal -1, this item exists
                 if (index !== -1) {
+                    //item with this index is formatted task rn
                     todolist[index] = formattedTask;
                     updateHtmlItem(formattedTask.uid, formattedTask)
                 }
