@@ -174,7 +174,7 @@ function save(data) {
         server.store({
             //put data on server
             title: data.title,
-            description: data.description
+            description: data.description,
             //process result
         }).then((data) => {
             //make fields in code be equal to the fields on server
@@ -214,6 +214,21 @@ function save(data) {
             })
 }}
 
+//checkbox
+function checked(data) {
+    server.put(data.uid,{
+        completed: true,
+    }).then(() => {
+        let checkbox = document.getElementById(`checkBox-${data.uid}`);
+        if (checkbox) {
+            checkbox.checked = true;
+        } else {
+            console.error(`checkBox-${data.uid}`);
+        }
+    });
+}
+
+
 
 //saving html elements
 
@@ -222,6 +237,7 @@ function createHtmLtodoItem(data) {
     liElement.classList.add('list-group-item', 'd-flex', 'justify-content-between');
     liElement.id = `item-${data.uid}`;
     liElement.innerHTML = `
+    <div><input type="checkbox" class="form-check-input" id="checkBox-${data.uid}"></div>
     <div>
     <p>Task:</p>
     <div id="title-${data.uid}">${data.title}</div>
@@ -235,8 +251,11 @@ function createHtmLtodoItem(data) {
         <button data-uid="${data.uid}" class="btn btn-danger delete-button" type="button">Delete</button>
     </div>
     `
-
+    let consok = document.getElementById(`checkBox-${data.uid}`)
+    console.log(consok)
     document.getElementById('todo').appendChild(liElement);
+
+    document.getElementById(`checkBox-${data.uid}`).addEventListener('click', checked)
 
     let editButton = liElement.querySelector('.edit-modal');
     editButton.addEventListener('click', function(event) {
