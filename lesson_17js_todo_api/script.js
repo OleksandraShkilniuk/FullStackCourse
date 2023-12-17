@@ -102,7 +102,6 @@ function init() {
             //create html for each item
             createHtmLtodoItem(formattedTask)
             todolist.push(formattedTask);
-            console.log(formattedTask)
         })
     })
 }
@@ -215,29 +214,31 @@ function save(data) {
 }}
 
 //checkbox
-function checked(data) {
-    server.put(data.uid,{
-        completed: true,
-    }).then(() => {
-        let checkbox = document.getElementById(`checkBox-${data.uid}`);
-        if (checkbox) {
-            checkbox.checked = true;
-        } else {
-            console.error(`checkBox-${data.uid}`);
+function checked(uid) {
+    server.put(uid,{
+        completed: !!document.getElementById(`checkItem-${uid}`).checked,
+    }).then((data) => {
+        let index = todolist.findIndex((item) => item.uid === uid)
+        if(index !== -1) {
+            console.log(data)
+            todolist[index].completed = data.completed;
+            let checkbox = document.getElementById(`checkItem-${uid}`)
+            checkbox.checked = data.completed;
+            console.log(data)
         }
     });
 }
 
-
-
 //saving html elements
 
 function createHtmLtodoItem(data) {
+
+    console.log(data)
     let liElement = document.createElement('li');
     liElement.classList.add('list-group-item', 'd-flex', 'justify-content-between');
     liElement.id = `item-${data.uid}`;
     liElement.innerHTML = `
-    <div><input type="checkbox" class="form-check-input" id="checkBox-${data.uid}"></div>
+    <div><input type="checkbox" class="form-check-input" id="checkItem-${data.uid}" data-uid="${data.uid}"></div>
     <div>
     <p>Task:</p>
     <div id="title-${data.uid}">${data.title}</div>
@@ -251,11 +252,12 @@ function createHtmLtodoItem(data) {
         <button data-uid="${data.uid}" class="btn btn-danger delete-button" type="button">Delete</button>
     </div>
     `
-    let consok = document.getElementById(`checkBox-${data.uid}`)
-    console.log(consok)
+
     document.getElementById('todo').appendChild(liElement);
 
-    document.getElementById(`checkBox-${data.uid}`).addEventListener('click', checked)
+    document.getElementById(`checkItem-${data.uid}`).addEventListener('click', function(event) {
+        checked(event.target.dataset.uid)
+    })
 
     let editButton = liElement.querySelector('.edit-modal');
     editButton.addEventListener('click', function(event) {
