@@ -98,6 +98,7 @@ function init() {
                 uid: task._uuid,
                 title: task.title,
                 description: task.description,
+                completed: !!task.completed,
             };
             //create html for each item
             createHtmLtodoItem(formattedTask)
@@ -215,16 +216,20 @@ function save(data) {
 
 //checkbox
 function checked(uid) {
+    //request to server for a particular task
     server.put(uid,{
+        //set completed value to boolean
         completed: !!document.getElementById(`checkItem-${uid}`).checked,
     }).then((data) => {
+        //find item
         let index = todolist.findIndex((item) => item.uid === uid)
+        //run condition to make it checked
         if(index !== -1) {
             console.log(data)
             todolist[index].completed = data.completed;
             let checkbox = document.getElementById(`checkItem-${uid}`)
+            //update html
             checkbox.checked = data.completed;
-            console.log(data)
         }
     });
 }
@@ -238,7 +243,7 @@ function createHtmLtodoItem(data) {
     liElement.classList.add('list-group-item', 'd-flex', 'justify-content-between');
     liElement.id = `item-${data.uid}`;
     liElement.innerHTML = `
-    <div><input type="checkbox" class="form-check-input" id="checkItem-${data.uid}" data-uid="${data.uid}"></div>
+    <div><input type="checkbox" class="form-check-input" id="checkItem-${data.uid}" data-uid="${data.uid}" ${data.completed?'checked': ''}></div>
     <div>
     <p>Task:</p>
     <div id="title-${data.uid}">${data.title}</div>
